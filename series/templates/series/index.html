@@ -5,10 +5,10 @@
     <h1>SERIES</h1>
     {% if series %}
         {% for s in series %}
-            {% include s.list_template %}
+            {% include "series/series_list.html" %}
         {% endfor %}
     {% else %}
-        No Posts
+        No Series Exist. You should add some.
     {% endif %}
     </section>
 {% endblock %}
