@@ -32,6 +32,12 @@ if (RUN_MODE == 'development' or RUN_MODE == 'staging'):
     
 DEBUG = os.getenv('DEBUG', DEBUG)
 
+# --- Change the default behaviour of the toolbar
+
+DEBUG_TOOLBAR_CONFIG = {
+    "SHOW_TOOLBAR_CALLBACK" : lambda x: DEBUG,
+}
+
 ALLOWED_HOSTS = [os.getenv('ALLOWED_HOSTS','')]
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
@@ -46,12 +52,19 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    'debug_toolbar',
+    
     'taggit',
     'storages',
     'polymorphic',
+    'embed_video',
     
     # Apps
+    'goteamwin',
+    'post',
+    'series',
     'textPost',
+    'video'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -122,7 +135,7 @@ USE_TZ = True
 
 # --- Static files (CSS, JavaScript, Images)
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
+STATIC_URL = BASE_DIR + '/static/'
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
@@ -167,3 +180,6 @@ else:
     
 # SITE INFO
 SITE_NAME = os.getenv('SITE_NAME', 'Your Site Name')
+
+# PAGINATION
+PAGINATION_LIMIT = 10

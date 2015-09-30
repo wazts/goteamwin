@@ -14,13 +14,14 @@ def get_featured_img_path(instance, filename):
 class BasePost (PolymorphicModel):
     
     # templates
-    list_template = 'posts/list.html'
-    detail_template = 'posts/detail.html'
-    tagcloud_template = 'posts/tagcloud.html'
-    body_detail_template = 'posts/body_detail.html'
-    body_list_template = 'posts/body_list.html'
-    feed_title_template = 'posts/feed_title.html'
-    feed_description_template = 'posts/feed_description.html'
+    list_template = 'post/list.html'
+    single_template = 'post/single.html'
+    tagcloud_template = 'post/tagcloud.html'
+    body_detail_template = 'post/body_detail.html'
+    body_list_template = 'post/body_list.html'
+    feed_title_template = 'post/feed_title.html'
+    feed_description_template = 'post/feed_description.html'
+    featured_home_template = 'post/featured_home.html'
     
     # Type
     post_type="base"
@@ -30,7 +31,7 @@ class BasePost (PolymorphicModel):
     slug = models.SlugField(max_length=100, unique=True, blank=False)
     author = models.ForeignKey(User, related_name='posts')
     comments_on = models.BooleanField(default=True)
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
     date_created = models.DateTimeField(auto_now_add=True)
     date_last_modified = models.DateTimeField(auto_now=True)
     date_pub = models.DateTimeField ('date published')
