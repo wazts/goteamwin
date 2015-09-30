@@ -3,6 +3,6 @@
 {% block post_meta %}
 <div class="post-list-meta">
     <span class="post-list-date"><i class="fa fa-clock-o"></i> {{ post.date_pub|timesince }} ago</span>
-    <span class="post-list-author"><i class="fa fa-television"></i> <a href="{% url 'series_episodes' slug=post.series.slug %}">{{ post.series }}</a></span>
+    <span class="post-list-author"><i class="fa fa-television"></i> <a href="{% url 'series_episodes' sSlug=post.series.slug %}">{{ post.series }}</a></span>
 </div>
 {% endblock%}
