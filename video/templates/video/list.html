@@ -1,5 +1,10 @@
 {% extends 'post/list.html' %}
 {% block post_type %}<i class="fa fa-film"></i>{% endblock %}
+{% block post_title %}
+    <a href="{% url 'series_episode_single' sSlug=post.series.slug eSlug=post.slug %}">
+        <h1 class="post-list-title">{{ post.title }}</h1>
+    </a>
+{% endblock %}
 {% block post_meta %}
 <div class="post-list-meta">
     <span class="post-list-date"><i class="fa fa-clock-o"></i> {{ post.date_pub|timesince }} ago</span>
