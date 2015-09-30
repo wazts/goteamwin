@@ -9,21 +9,24 @@
             <div id="nav-main-menu" class=" col-xs-8">
                 <ul class="nav nav-pills">
                     <li role="presentation">
-                        <a href="#">HOME</a>
+                        <a href="{% url 'home' %}">HOME</a>
                     </li>
                     <li role="presentation">
                         <a href="{% url 'text_posts_index' %}">NEWS</a>
                     </li>
                     <li role="presentation">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             SHOWS <span class="caret"></span>
                         </a>
                         {% series_list as all_series_list %}
                         {% if all_series_list %}
                         <ul class="dropdown-menu">
+                            <li>
+                                <a href="{% url 'series_all_index' %}">All Shows</a>
+                            </li>
                             {% for series in all_series_list %}
                             <li>
-                                <a href="{% url 'series_episodes' slug=series.title %}">{{ series.title }}</a>
+                                <a href="{% url 'series_episodes' sSlug=series.slug %}">{{ series.title }}</a>
                             </li>
                             {% endfor %}
                         </ul>

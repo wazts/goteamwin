@@ -19,5 +19,5 @@ urlpatterns = patterns('',
             paginate_by=settings.PAGINATION_LIMIT,
             template_name='textPost/index.html'),
             name='text_posts_index'),
-    url(r'^(?P<slug>.+)$', views.text_post_view, name='text_post_details'),
+    url(r'^(?P<slug>.+)$', views.text_post_view, name='text_post_single'),
 )

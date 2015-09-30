@@ -17,6 +17,7 @@ urlpatterns = patterns('',
             queryset=Series.objects.order_by('title'),
             context_object_name='series',
             template_name='series/index.html'),
-            name='series_index'),
-    url(r'^(?P<slug>.+)$', views.series_episode_view, name='series_episodes'),
+            name='series_all_index'),
+    url(r'^(?P<sSlug>.+)/$', views.series_episodes_view, name='series_episodes'),
+    url(r'^(?P<sSlug>.+)/(?P<eSlug>.+)$', views.series_episode_single_view, name='series_episode_single')
 )
