@@ -9,6 +9,13 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from post.models import BasePost
 from series.models import SeriesPost
 
+def handler404(request):
+    return render(request, '404.html', status_code=404)
+
+
+def handler500(request):
+    return render(request, '500.html', status_code=500)
+
 def home(request):
     """ Return the home page
     """
