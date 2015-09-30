@@ -1,0 +1,9 @@
+{% if recent_videos %}
+<div id="featured-videos" class="row">
+    {% for video in recent_videos|slice:":3" %}
+            <div class="col-md-4">
+                {% include "video/featured_image_large.html" %}
+            </div>
+    {% endfor %}
+</div>
+{% endif %}

@@ -1,0 +1,209 @@
+/*
+    Stylesheet for Go Team Win.
+    Author: Kyle Wagner
+    URL: http://goteamwin.com
+*/
+
+@import "compass";
+@import "compass/reset";
+@import "compass/layout/sticky-footer";
+
+// -----------------------------------------------------------------------------
+// Mixins
+// -----------------------------------------------------------------------------
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: $grey-dark;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Variables
+// -----------------------------------------------------------------------------
+
+// Colors
+$black: #000;
+$grey-dark: #444444;
+$grey-light: #777777;
+$white-light: #fefefe;
+$white-medium: #f6f6f6;
+$white-dark: #ccc;
+$red-dark: #660000;
+$basic-shadow: 0px 0px 1px 0px rgba(0,0,0, 0.2);
+$dividing-border: solid 0.25em $red-dark;
+
+// heights
+$logo-main-height: 150px;
+$nav-main-height: 50px;
+$video-carousel-height: 600px;
+
+body {
+    font-family: 'Sintony', sans-serif;
+    color: $grey-dark;
+    background-color: $white-medium;
+}
+
+h1 {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-size: 1.5em;
+}
+
+h2 {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    font-size: 1.3em;
+}
+
+p {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}
+a {
+    color: $red-dark;
+    text-decoration: underline;
+}
+
+.divider {
+    width: 75%;
+    height: 0.25em;
+    background-color: $red-dark;
+}
+
+/* main */
+
+.content-main {
+    min-height: 100%;
+}
+
+/* headers */
+.logo-main {
+    width: $logo-main-height;
+    height: $logo-main-height;
+}
+
+#main-logo {
+    z-index:2;
+}
+
+/* nav */
+
+#header-main {
+    background-color: $white-light;
+    box-shadow: $basic-shadow;
+}
+#nav-main-menu {
+    position:relative;
+    top: $logo-main-height - $nav-main-height;
+    font-size: 1.5em;
+    z-index: 1;
+    a {
+        text-decoration: none;
+        color: $grey-dark;
+    }
+}
+
+.nav-pills {
+        a {
+            text-decoration: none;
+        }
+}
+
+.nav-social {
+    float: right;
+}
+
+/* Featured on home */
+
+.new-content {
+    padding-left: 2em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+}
+.featured-content {
+    position: relative;
+    text-shadow: $basic-shadow;
+    .featured-image {
+        @include aspect-ratio(16, 9);
+        background-size: cover;
+    }
+    
+    .featured-type {
+        color: $white-light;
+        font-size: 2em;
+    
+    }
+    a {
+        color: $white-light;
+    }
+}
+
+/* Main Content */
+.content-main {
+
+}
+
+/* Post */
+.post-list-entry {
+    margin-bottom: 30px;
+}
+
+.post-list-main {
+    background-color: $white-light;
+    padding: 1em;
+    box-shadow: $basic-shadow;
+}
+
+.post-list-header {
+    margin-bottom: 20px;
+}
+
+.post-list-type {
+    color: $grey-light;
+    font-weight: bold;
+    padding-top: 1em;
+}
+
+.post-list-title {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.post-list-meta {
+    font-size: 0.8em;
+    color: $grey-light;
+    font-weight: bold;
+    
+    a {
+        color: $grey-light;
+        
+        &:hover {
+            color: $red-dark;
+        }
+    }
+}
+.post-list-date {
+
+}
+
+.post-list-body {
+     margin: 0;
+}
+
+.post-list-type {
+    i:before {
+        font-size:3em;
+    }
+}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block featured %}
+<section class="new-content">
+    <div>
+        <h1>NEW THINGS</h1>
+        {% if recent_media %}
+        <div class="row">
+            {% for media in recent_media %}
+                    <div class="col-md-4">
+                            {% include media.featured_home_template %}
+                    </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+{% block content %}
+    <section>
+        <h1>LATEST UPDATES</h1>
+        {% if posts %}
+            {% for post in posts %}
+                {% include post.list_template %}
+            {% endfor %}
+        {% else %}
+            No Posts
+        {% endif %}
+        {% if page_obj %}
+            {% include "page_nav.html" %}
+        {% endif %}
+    </section>
+{% endblock %}

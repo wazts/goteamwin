@@ -16,7 +16,6 @@ class BasePost (PolymorphicModel):
     # templates
     list_template = 'post/list.html'
     single_template = 'post/single.html'
-    tagcloud_template = 'post/tagcloud.html'
     body_detail_template = 'post/body_detail.html'
     body_list_template = 'post/body_list.html'
     feed_title_template = 'post/feed_title.html'

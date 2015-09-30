@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+    <h1>SERIES</h1>
+    {% if series %}
+        {% for s in series %}
+            {% include s.list_template %}
+        {% endfor %}
+    {% else %}
+        No Posts
+    {% endif %}
+    </section>
+{% endblock %}

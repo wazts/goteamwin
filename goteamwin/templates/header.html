@@ -1,0 +1,40 @@
+{% load navigation_tags %}
+{% load staticfiles %}
+<header id="header-main">
+    <div class="container">
+        <div class="row">
+            <div id="main-logo" class="col-xs-4" style="text-align:center">
+                <img src="{% static "img/logo_400.png" %}" class="logo-main img-responsive"/>
+            </div>
+            <div id="nav-main-menu" class=" col-xs-8">
+                <ul class="nav nav-pills">
+                    <li role="presentation">
+                        <a href="#">HOME</a>
+                    </li>
+                    <li role="presentation">
+                        <a href="{% url 'text_posts_index' %}">NEWS</a>
+                    </li>
+                    <li role="presentation">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                            SHOWS <span class="caret"></span>
+                        </a>
+                        {% series_list as all_series_list %}
+                        {% if all_series_list %}
+                        <ul class="dropdown-menu">
+                            {% for series in all_series_list %}
+                            <li>
+                                <a href="{% url 'series_episodes' slug=series.title %}">{{ series.title }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </li>
+                    <li role="presentation">
+                        <a href="#">PODCAST</a>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+</header>

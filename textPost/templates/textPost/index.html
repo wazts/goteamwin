@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section>
+    <h1>NEWS</h1>
+    {% if posts %}
+        {% for post in posts %}
+            {% include post.list_template %}
+        {% endfor %}
+    {% else %}
+        No Posts
+    {% endif %}
+    </section>
+    {% if page_obj %}
+        {% include "page_nav.html" %}
+    {% endif %}
+{% endblock %}

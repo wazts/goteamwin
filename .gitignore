@@ -58,6 +58,10 @@ target/
 # Project
 comics/
 featured/
+*.png
+*.jpg
+*.jpeg
+*.gif
 
 # Database
 *.sqlite3
@@ -69,3 +73,4 @@ staticfiles
 
 # Virtual Env
 venv/
+

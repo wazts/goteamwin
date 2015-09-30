@@ -1,0 +1,16 @@
+{% block featured_content %}
+<div class="featured-content">
+    <a href="#">
+        <div class="featured-image">
+            <div class="content" style="background-image: url('{{ media.get_featured_image_url }}')">
+                <div class="row">
+                    <div class="featured-type col-xs-2">{% block featured_type %}{% endblock %}</div>
+                    <div class="featured-title col-xs-10" >
+                        <h2>{% block featured_title %}{{ media.title }}{% endblock %}</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+{% endblock %}
