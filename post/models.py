@@ -16,6 +16,7 @@ class BasePost (PolymorphicModel):
     # templates
     list_template = 'post/list.html'
     single_template = 'post/single.html'
+    tagcloud_template = 'post/tagcloud.html'
     body_detail_template = 'post/body_detail.html'
     body_list_template = 'post/body_list.html'
     feed_title_template = 'post/feed_title.html'
@@ -39,6 +40,9 @@ class BasePost (PolymorphicModel):
     
     featured_post = models.BooleanField(default=False)
     featured_image = models.ImageField(upload_to=get_featured_img_path, blank=True)
+    
+    def get_permilink(self):
+        pass
     
     def upcast (self):
         return upcast(self)

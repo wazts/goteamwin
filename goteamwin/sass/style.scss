@@ -37,7 +37,7 @@
 $black: #000;
 $grey-dark: #444444;
 $grey-light: #777777;
-$white-light: #fefefe;
+$white-light: #fdfdfd;
 $white-medium: #f6f6f6;
 $white-dark: #ccc;
 $red-dark: #660000;
@@ -45,14 +45,12 @@ $basic-shadow: 0px 0px 1px 0px rgba(0,0,0, 0.2);
 $dividing-border: solid 0.25em $red-dark;
 
 // heights
-$logo-main-height: 150px;
-$nav-main-height: 50px;
-$video-carousel-height: 600px;
+$logo-main-height: 60px;
 
 body {
     font-family: 'Sintony', sans-serif;
     color: $grey-dark;
-    background-color: $white-medium;
+    background-color: $white-light;
 }
 
 h1 {
@@ -87,6 +85,10 @@ a {
     vertical-align: middle;
 }
 
+.expand-height {
+    //min-height: 100%;
+}
+
 /* main */
 
 .content-main {
@@ -94,81 +96,37 @@ a {
 }
 
 /* headers */
-.logo-main {
-    width: $logo-main-height;
-    height: $logo-main-height;
-}
 
-#main-logo {
-    z-index:2;
-}
 
 /* nav */
 
-#header-main {
+.navbar-goteamwin {
+    margin: 0;
     background-color: $white-light;
-    box-shadow: $basic-shadow;
-}
-#nav-main-menu {
-    position:relative;
-    top: $logo-main-height - $nav-main-height;
-    font-size: 1.5em;
-    z-index: 1;
     a {
-        text-decoration: none;
-        color: $grey-dark;
+        decoration: none;
     }
 }
-
-.nav-pills {
-        a {
-            text-decoration: none;
-        }
-}
-
-.nav-social {
-    float: right;
-}
-
 /* Featured on home */
 
+$newContentHeight: 400px;
 .new-content {
-    padding-left: 2em;
-    padding-right: 2em;
+    height: $newContentHeight;
+    
+    .first-featured {
+        height: $newContentHeight;
+        
+        .featured-content {
+            padding: 0;
+        }
+    }
+    .second-featured {
+        height: $newContentHeight / 2;
+    }
 }
 
-.featured-content {
-    position: relative;
-    text-shadow: $basic-shadow;
-    margin-bottom: 2em;
-    
-    .featured-image {
-        @include aspect-ratio(16, 9);
-        background-size: cover;
-    }
-    
-    .featured-type {
-        color: $white-light;
-        font-size: 2em;
-    
-    }
-    
-    .row {
-        right: 0;
-    }
-    
-    .featured-info {
-        position: absolute;
-        bottom: 0;
-        background-color: $grey-dark;
-        width: 100%;
-        height: 20%;
-        margin: 0;
-    }
-    
-    a {
-        color: $white-light;
-    }
+.featured-image {
+    height: 100%;
 }
 
 /* Main Content */

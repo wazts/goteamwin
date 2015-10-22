@@ -1,3 +1,7 @@
 {% extends 'post/featured_home.html' %}
-{% block featured_title %}{{media.series}} - {{ media.title }}{% endblock %}
-{% block featured_type %}<i class="fa fa-film"></i>{% endblock %}
+{% block featured_content %}
+<a href="{% url 'series_episode_single' sSlug=media.series.slug eSlug=media.slug %}">
+    <div class="featured-image" style="background: url('{{ media.get_featured_image_url }}') center center; background-size: cover;">
+    </div>
+</a> 
+{% endblock %}

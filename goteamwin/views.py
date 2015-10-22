@@ -20,7 +20,7 @@ def home(request):
     """ Return the home page
     """
     posts = BasePost.objects.all().order_by('-date_pub')
-    recent_media = SeriesPost.objects.all().order_by('-date_pub')[:3]
+    recent_media = SeriesPost.objects.all().order_by('-date_pub')[:5]
     paginator = Paginator(posts, settings.PAGINATION_LIMIT)
 
     page_num = request.GET.get('page', 1)

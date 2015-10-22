@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 {% block featured %}
 <section class="new-content">
-    <div>
-        <h1>NEW THINGS</h1>
-        {% if recent_media %}
-        <div class="row">
-            {% for media in recent_media %}
-                    <div class="col-md-4">
+    <h1>NEW MEDIA</h1>
+    <div class="container">
+        <div class="row first-featured">
+        {% for media in recent_media %}
+            {% if forloop.counter0 == 0 %}
+            <div class="col-md-6 featured-content">
+                {% include media.featured_home_template %}
+            </div>
+            <div class="col-md-6">
+            {% else %}
+                {% if forloop.counter0|divisibleby:2 %}
+                        <div class="col-sm-6 featured-content">
                             {% include media.featured_home_template %}
+                        </div>
                     </div>
-            {% endfor %}
+                {% else %}
+                    <div class="row second-featured">
+                        <div class="col-sm-6 featured-content">
+                            {% include media.featured_home_template %}
+                        </div>
+                {% endif %}
+            {% endif %}
+            
+        {% endfor %}
         </div>
-        {% endif %}
+        </div>
     </div>
 </section>
 {% endblock %}
