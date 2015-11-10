@@ -38,11 +38,13 @@ $black: #000;
 $grey-dark: #444444;
 $grey-light: #777777;
 $white-light: #fdfdfd;
-$white-medium: #f6f6f6;
-$white-dark: #ccc;
-$red-dark: #660000;
+$white-medium: #f6f5f2;
+$white-dark: #e7e7e7;
+$purple: #7D26CD;
+$purple-dark: #4b167b;
+$green: #86a669;
 $basic-shadow: 0px 0px 1px 0px rgba(0,0,0, 0.2);
-$dividing-border: solid 0.25em $red-dark;
+$dividing-border: solid 1px $purple;
 
 // heights
 $logo-main-height: 60px;
@@ -52,32 +54,24 @@ body {
     color: $grey-dark;
     background-color: $white-light;
 }
-
-h1 {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    font-size: 1.5em;
-}
-
-h2 {
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
-    font-size: 1.3em;
-}
-
 p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
+
 a {
-    color: $red-dark;
+    color: $purple;
     text-decoration: underline;
+    
+    &:hover {
+        color: $purple-dark;
+    }
 }
 
 .divider {
     width: 75%;
     height: 0.25em;
-    background-color: $red-dark;
+    background-color: $purple;
 }
 
 .vcenter {
@@ -89,6 +83,31 @@ a {
     //min-height: 100%;
 }
 
+/* social */
+a.twitter:hover {
+    i {
+        color : #55acee;
+    }
+}
+
+a.facebook:hover {
+    i {
+        color : #3b5998;
+    }
+}
+
+a.twitch:hover {
+    i {
+        color : #6441A5;
+    }
+}
+
+a.youtube:hover {
+    i {
+        color : #e52d27;
+    }
+}
+
 /* main */
 
 .content-main {
@@ -97,14 +116,45 @@ a {
 
 /* headers */
 
+.header-social {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    background-color: $grey-dark;
+    ul {
+        li {
+            display: inline;
+            padding-left: 0.5em;
+            font-size: 1.5em;
+            a {
+                color: $white-dark;
+                decoration: none;
+                
+                &:hover {
+                    color: $purple-dark;
+                }
+            }
+        }
+    }
+}
 
 /* nav */
 
 .navbar-goteamwin {
     margin: 0;
-    background-color: $white-light;
-    a {
-        decoration: none;
+    
+    .navbar-collapse {
+        ul {
+            li {
+                a {
+                    color: $purple;
+                    text-decoration: none;
+                    
+                    &:hover {
+                        color: $purple-dark;
+                    }
+                }
+            }
+        }
     }
 }
 /* Featured on home */
@@ -115,74 +165,67 @@ $newContentHeight: 400px;
     
     .first-featured {
         height: $newContentHeight;
-        
-        .featured-content {
-            padding: 0;
-        }
     }
     .second-featured {
         height: $newContentHeight / 2;
     }
 }
 
+.featured-content{
+    padding: 0 0 0 0;
+}
 .featured-image {
     height: 100%;
 }
 
 /* Main Content */
-.content-main {
-
+.main-content {
+    margin-top: 2em;
 }
 
-/* Post */
-.post-list-entry {
-    margin-bottom: 30px;
-}
-
-.post-list-main {
+/* List */
+.list-entry {
+    margin-bottom: 2em;
     background-color: $white-light;
-    padding: 1em;
-    box-shadow: $basic-shadow;
+    border-bottom: 2px solid $purple-dark;
 }
 
-.post-list-header {
-    margin-bottom: 20px;
+.list-image {
+    border-top: 1px solid $purple;
+    border-bottom: 1px solid $purple;
 }
 
-.post-list-type {
-    color: $grey-light;
-    font-weight: bold;
-    padding-top: 1em;
-}
-
-.post-list-title {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-.post-list-meta {
+.list-type {
+    color: $purple;
     font-size: 0.8em;
-    color: $grey-light;
-    font-weight: bold;
-    
+    margin-bottom: 0.3em;
+}
+
+.list-title {
+    font-size: 1.5em;
+    margin-top: 1em;
     a {
-        color: $grey-light;
+        color: $grey-dark;
+        text-decoration: none;
         
         &:hover {
-            color: $red-dark;
+            color: $purple;
         }
     }
 }
-.post-list-date {
 
+.list-body,
+.list-header {
+    padding-bottom: 1em;
 }
 
-.post-list-body {
-     margin: 0;
+.list-image {
+    @include aspect-ratio(7, 3);
 }
 
-.post-list-type {
-    i:before {
-        font-size:3em;
-    }
+.list-meta {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+    font-size: 0.8em;
+    color: $grey-light;
 }

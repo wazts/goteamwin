@@ -1,25 +1,18 @@
-<div class="row post-list-entry">
-    <div class="col-sm-4">
-        <div class="featured-image">
-            <a href="{{ post.get_permilink }}"
-        </div>
-    </div>
-    <div class="col-sm-11">
-        <article class="post-list-main">
-            <header class="post-list-header">
-                {% block post_title %}
-                    <h1 class="post-list-title">{{ post.title }}</h1>
-                {% endblock %}
-                {% block post_meta %}
-                <div class="post-list-meta">
-                    <span class="post-list-date"><i class="fa fa-clock-o"></i> {{ post.date_pub|timesince }} ago</span>
-                    <span class="post-list-author"><i class="fa fa-user"> </i> {{ post.author }}</span>
+<div class="list-entry">
+    <article class="list-main">
+        <header class="list-header">
+            <div class="list-type">{% block post_type %}{% endblock %}</div>
+            <div class="list-image">
+                <div class="content" style="background: url('{{ post.get_featured_image_url }}') center center no-repeat; background-size: cover">
                 </div>
-                {% endblock%}
-            </header>
-            <p class="post-list-body">
-                {% block post_content %}{% include post.body_list_template %}{% endblock %}
-            </p>
-        </article>
-    </div>
+            </div>
+            <h1 class="list-title"><a href='{{ post.get_permilink }}'>{{ post.title }}</a></h1>
+            <div class="list-meta">
+                {% block post_author %}<span class="list-author">Posted by {{ post.author }}</span>{% endblock %} on {{ post.date_pub }}
+            </div>
+        </header>
+        <div class="list-body">
+            {% block post_content %}{% include post.body_list_template %}{% endblock %}
+        </div>
+    </article>
 </div>

@@ -1,0 +1,12 @@
+<div>
+    <h1>
+        Latest Videos
+    </h1>
+    <div>
+        {% if latest_vids %}
+            {% for vid in latest_vids %}
+                {{ vid.title }}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>

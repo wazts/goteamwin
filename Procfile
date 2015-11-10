@@ -1,0 +1,1 @@
+web: gunicorn goteamwin.wsgi --log-file -

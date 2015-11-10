@@ -52,3 +52,6 @@ class BasePost (PolymorphicModel):
         
     def get_disqus_id(self):
         return '%s-%s' % (self.post_type, self.slug)
+        
+    def get_featured_image_url(self):
+        return self.featured_image.url

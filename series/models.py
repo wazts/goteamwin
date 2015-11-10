@@ -2,6 +2,7 @@ import os
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 
 from post.models import BasePost
 
@@ -47,3 +48,6 @@ class SeriesPost(BasePost):
     actors = models.ManyToManyField(User)
     episode_number = models.IntegerField()
     description = models.TextField()
+    
+    def get_permilink(self): 
+        return reverse('series_episode_single', args=(self.series.slug,self.slug,))

@@ -1,47 +1,55 @@
 {% extends "base.html" %}
+{% block header %}
+{% endblock %}
 {% block featured %}
-<section class="new-content">
-    <h1>NEW MEDIA</h1>
-    <div class="container">
-        <div class="row first-featured">
-        {% for media in recent_media %}
-            {% if forloop.counter0 == 0 %}
-            <div class="col-md-6 featured-content">
-                {% include media.featured_home_template %}
-            </div>
-            <div class="col-md-6">
-            {% else %}
-                {% if forloop.counter0|divisibleby:2 %}
-                        <div class="col-sm-6 featured-content">
-                            {% include media.featured_home_template %}
-                        </div>
+<section class="new-content hidden-xs">
+    <div class="row first-featured">
+    {% for media in recent_media %}
+        {% if forloop.counter0 == 0 %}
+        <div class="col-md-4 featured-content">
+            {% include media.featured_home_template %}
+        </div>
+        <div class="col-md-8">
+        {% else %}
+            {% if forloop.counter0|divisibleby:2 %}
+                    <div class="col-sm-6 featured-content">
+                        {% include media.featured_home_template %}
                     </div>
-                {% else %}
-                    <div class="row second-featured">
-                        <div class="col-sm-6 featured-content">
-                            {% include media.featured_home_template %}
-                        </div>
-                {% endif %}
+                </div>
+            {% else %}
+                <div class="row second-featured">
+                    <div class="col-sm-6 featured-content">
+                        {% include media.featured_home_template %}
+                    </div>
             {% endif %}
-            
-        {% endfor %}
-        </div>
-        </div>
+        {% endif %}
+        
+    {% endfor %}
+    </div>
     </div>
 </section>
+ {% include "header.html" %}
 {% endblock %}
 {% block content %}
-    <section>
-        <h1>LATEST UPDATES</h1>
-        {% if posts %}
-            {% for post in posts %}
-                {% include post.list_template %}
-            {% endfor %}
-        {% else %}
-            No Posts
-        {% endif %}
-        {% if page_obj %}
-            {% include "page_nav.html" %}
-        {% endif %}
-    </section>
+<div class="container">
+    <div class="row main-content">
+        <div class="col-md-8">
+            <section>
+                {% if posts %}
+                    {% for post in posts %}
+                        {% include post.list_template %}
+                    {% endfor %}
+                {% else %}
+                    No Posts
+                {% endif %}
+                {% if page_obj %}
+                    {% include "page_nav.html" %}
+                {% endif %}
+            </section>
+        </div>
+        <div class="col-md-4">
+            {% include "sidebar.html" %}
+        </div>
+    </div>
+</div>
 {% endblock %}

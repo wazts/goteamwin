@@ -16,7 +16,9 @@
     </head>
 <html>
     <body>
-        {% block above_header %}{% endblock %}
+        {% block above_header %}
+            {% include "social_bar.html" %}
+        {% endblock %}
         {% block header %}
             {% include "header.html" %}
         {% endblock %}
