@@ -8,6 +8,8 @@
 @import "compass/reset";
 @import "compass/layout/sticky-footer";
 
+@import "variables";
+
 // -----------------------------------------------------------------------------
 // Mixins
 // -----------------------------------------------------------------------------
@@ -32,22 +34,6 @@
 // -----------------------------------------------------------------------------
 // Variables
 // -----------------------------------------------------------------------------
-
-// Colors
-$black: #000;
-$grey-dark: #444444;
-$grey-light: #777777;
-$white-light: #fdfdfd;
-$white-medium: #f6f5f2;
-$white-dark: #e7e7e7;
-$purple: #7D26CD;
-$purple-dark: #4b167b;
-$green: #86a669;
-$basic-shadow: 0px 0px 1px 0px rgba(0,0,0, 0.2);
-$dividing-border: solid 1px $purple;
-
-// heights
-$logo-main-height: 60px;
 
 body {
     font-family: 'Sintony', sans-serif;
@@ -114,6 +100,12 @@ a.youtube:hover {
     min-height: 100%;
 }
 
+h1.section-header {
+    font-size: 1.5em;
+    margin-bottom: 1em;
+    border-bottom: solid 1px $purple-dark;
+}
+
 /* headers */
 
 .header-social {
@@ -141,7 +133,9 @@ a.youtube:hover {
 
 .navbar-goteamwin {
     margin: 0;
-    
+    background: $white-dark;
+    border-radius: 0;
+    border-bottom: 1px solid $grey-light;
     .navbar-collapse {
         ul {
             li {
@@ -162,7 +156,7 @@ a.youtube:hover {
 $newContentHeight: 400px;
 .new-content {
     height: $newContentHeight;
-    
+    background: $black;
     .first-featured {
         height: $newContentHeight;
     }
@@ -173,9 +167,39 @@ $newContentHeight: 400px;
 
 .featured-content{
     padding: 0 0 0 0;
-}
-.featured-image {
-    height: 100%;
+    position: relative;
+    a {
+        color: $white-light;
+        
+        .featured-image {
+            height: 100%;
+            .overlay{
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(left, $purple-dark, $purple);
+                opacity: 0.45;
+            }
+        }
+        .featured-header {
+            width: 100%;
+            font-size: 1.5em;
+            
+            .title {
+                padding: 0.5em;
+                position: absolute;
+                bottom: 0;
+            }
+            
+            .meta {
+                position: absolute;
+                top: 0;
+                padding: 0.5em;
+                font-size: 0.6em;
+                color: $purple;
+            }
+            
+        }
+    }
 }
 
 /* Main Content */
