@@ -54,6 +54,14 @@ a {
     }
 }
 
+h1 {
+    font-size: 1.8em;
+}
+
+h2 {
+    font-size: 1.3em;
+}
+
 .divider {
     width: 75%;
     height: 0.25em;
@@ -100,8 +108,7 @@ a.youtube:hover {
     min-height: 100%;
 }
 
-h1.section-header {
-    font-size: 1.5em;
+.section-header {
     margin-bottom: 1em;
     border-bottom: solid 1px $purple-dark;
 }
@@ -252,4 +259,23 @@ $newContentHeight: 400px;
     padding-bottom: 0.5em;
     font-size: 0.8em;
     color: $grey-light;
+}
+
+/* posts */
+.post-content {
+    padding-top: 2em;
+    
+    .title {
+        
+    }
+}
+
+
+/* Video pages */
+.video-viewer{
+    background-color: $black;
+    
+    .video {
+        @include aspect-ratio(16,9);
+    }
 }

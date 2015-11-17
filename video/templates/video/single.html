@@ -1,8 +1,43 @@
 {% extends "base.html" %}
+{% load embed_video_tags %}
+
 {% block title %}
 - {{ episode.title }}
 {% endblock %}
 
+{% block featured %}
+<div class="video-viewer">
+    <div class="container">
+        <div class="video">
+            <div class="content">
+                {% video episode.embeded_video '100% x 100%' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
-<h1>{{ episode.title }}</h1>
+<div class="row post-content">
+    <div class="col-md-9">
+        <div class="video-info">
+            <h1>{{ episode.title }}</h1>
+            <p>
+                {{ episode.description }}
+            </p>    
+        </div>
+        <div class="related-videos">
+            <h2 class="section-header">
+                MORE {{ episode.series|upper}} VIDEOS
+            </h2>
+        </div>
+        <div id="comments">
+            <h2 class="section-header">
+                COMMENTS
+            </h2>
+        </div>
+    </div>
+    <div class="col-md-3">
+        NOT THE CONTENT
+    </div>
+</div>
 {% endblock %}
