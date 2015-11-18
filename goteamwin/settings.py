@@ -28,7 +28,6 @@ RUN_MODE = os.getenv('RUN_MODE', 'development')
 DEBUG = False
 if (RUN_MODE == 'development' or RUN_MODE == 'staging'):
     DEBUG=True
-    TEMPLATE_DEBUG = True
     
 DEBUG = os.getenv('DEBUG', DEBUG)
 
@@ -92,6 +91,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'debug': DEBUG,
         },
     },
 ]
