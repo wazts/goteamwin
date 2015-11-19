@@ -1,58 +1,47 @@
 {% extends "base.html" %}
-{% block header %}
-{% endblock %}
-{% block featured %}
-<section class="new-content hidden-xs">
-    <div class="container">
-    <div class="row first-featured">
-    {% for media in recent_media %}
-        {% if forloop.counter0 == 0 %}
-        <div class="col-md-4 featured-content">
-            {% include media.featured_home_template %}
+{% load staticfiles %}
+
+{% block billboard %}
+    <div class="featured">
+        <div class="container">
+            <div class="row">
+                {% for post in featured_posts %}
+                    <div class="featured-content col-md-4">
+                        {% include post.featured_home_template %}
+                    </div>
+                {% endfor %}
+            </div>
         </div>
-        <div class="col-md-8">
-        {% else %}
-            {% if forloop.counter0|divisibleby:2 %}
-                    <div class="col-sm-6 featured-content">
-                        {% include media.featured_home_template %}
-                    </div>
-                </div>
-            {% else %}
-                <div class="row second-featured">
-                    <div class="col-sm-6 featured-content">
-                        {% include media.featured_home_template %}
-                    </div>
-            {% endif %}
-        {% endif %}
-        
-    {% endfor %}
     </div>
-    </div>
-</section>
- {% include "header.html" %}
 {% endblock %}
 {% block content %}
-<div class="container">
-    <div class="row main-content">
-        <div class="col-md-9">
-            <section>
-                <h2 class="section-header">FEED</h2>
-                {% if posts %}
-                    {% for post in posts %}
+<div class="row">
+    <div class="col-md-9">
+        <section class="post-list">
+            <h2 class="section-header">FEED</h2>
+            {% if posts %}
+                {% for post in posts %}
+                    {% if forloop.counter0|divisibleby:3 %}
+                    <div class="row">
+                    {% endif %}
+                    <div class="col-md-4">
                         {% include post.list_template %}
-                    {% endfor %}
-                {% else %}
-                    No Posts
-                {% endif %}
-                {% if page_obj %}
-                    {% include "page_nav.html" %}
-                {% endif %}
-            </section>
-        </div>
-        <div class="col-md-3">
-            {% include "sidebar.html" %}
-        </div>
+                    </div>
+                    {% if forloop.counter0|add:1|divisibleby:3 %}
+                    </div>
+                    {% endif %}
+                    
+                {% endfor %}
+            {% else %}
+                No Posts
+            {% endif %}
+            {% if page_obj %}
+                {% include "page_nav.html" %}
+            {% endif %}
+        </section>
     </div>
+    <div class="col-md-3">
+        {% include "sidebar.html" %}
     </div>
 </div>
 {% endblock %}

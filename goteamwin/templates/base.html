@@ -16,15 +16,12 @@
     </head>
 <html>
     <body>
-        {% block above_header %}
-            {% include "social_bar.html" %}
-        {% endblock %}
-        {% block header %}
-            {% include "header.html" %}
-        {% endblock %}
-        {% block featured %}{% endblock %}
+        {% include 'header.html' %}
+        <div id="billboard">
+        {% block billboard %}{% endblock %}
+        </div>
         <div class="container">
-            <div class="content-main">
+            <div class="main-content">
                     {% block content %}{% endblock %}
             </div>
         </div>

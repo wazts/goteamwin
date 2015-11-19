@@ -27,7 +27,6 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: $grey-dark;
   }
 }
 
@@ -37,8 +36,8 @@
 
 body {
     font-family: 'Sintony', sans-serif;
-    color: $grey-dark;
-    background-color: $white-light;
+    color: $black;
+    background-color: $white-dark;
 }
 p {
     margin-top: 0.5em;
@@ -102,6 +101,74 @@ a.youtube:hover {
     }
 }
 
+/* billboard */
+nav.navigation-top {
+    background-color: $white-light;
+    $navbar-top-height: 4em;
+    $side-offset: 2em;
+    height: $navbar-top-height;
+    border-bottom: solid 1px $purple-dark;
+    // Social
+    position: relative;
+    .social {
+        $social-height: 1.5em;
+        height: $social-height;
+        position: absolute;
+        right: $side-offset;
+        top: ($navbar-top-height - $social-height) / 2;
+        ul {
+            li {
+                display: inline;
+                padding-left: 0.5em;
+                font-size: $social-height;
+                a {
+                    color: $grey-dark;
+                    decoration: none;
+                    
+                    &:hover {
+                        color: $purple-dark;
+                    }
+                }
+            }
+        }
+    }
+    
+    $logo-size: $navbar-top-height; 
+    .logo {
+        position: absolute;
+        top: 0;
+        left: $side-offset;
+        height: $logo-size;
+        width: $logo-size;
+    }
+    
+    // menu button
+    .menu {
+        line-height: $navbar-top-height;
+        position: absolute;
+        left: $side-offset + $logo-size + 1em;
+        
+        ul {
+            li {
+                display: inline;
+                padding-right: 0.5em;
+            }
+        }
+    }
+}
+#billboard {
+
+}
+
+.billboard-logo {
+    margin: 0 auto;
+}
+
+.logo {
+    width: 300px;
+    height: 300px;
+}
+
 /* main */
 
 .content-main {
@@ -111,29 +178,6 @@ a.youtube:hover {
 .section-header {
     margin-bottom: 1em;
     border-bottom: solid 1px $purple-dark;
-}
-
-/* headers */
-
-.header-social {
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-    background-color: $grey-dark;
-    ul {
-        li {
-            display: inline;
-            padding-left: 0.5em;
-            font-size: 1.5em;
-            a {
-                color: $white-dark;
-                decoration: none;
-                
-                &:hover {
-                    color: $purple-dark;
-                }
-            }
-        }
-    }
 }
 
 /* nav */
@@ -173,36 +217,36 @@ $newContentHeight: 400px;
 }
 
 .featured-content{
-    padding: 0 0 0 0;
     position: relative;
+    margin-top: 2em;
     a {
-        color: $white-light;
-        
+        text-decoration: none;
         .featured-image {
-            height: 100%;
+            @include aspect-ratio(16,10);
+            border-top: solid 2px $purple-dark;
+            box-shadow: 0px 1px 2px $grey-dark;
             .overlay{
                 width: 100%;
                 height: 100%;
                 background: linear-gradient(left, $purple-dark, $purple);
-                opacity: 0.45;
+                opacity: 0.30;
             }
         }
         .featured-header {
             width: 100%;
-            font-size: 1.5em;
+            font-size: 1.2em;
             
             .title {
                 padding: 0.5em;
-                position: absolute;
-                bottom: 0;
+                color: $black;
+                width: 100%;
             }
             
             .meta {
-                position: absolute;
-                top: 0;
                 padding: 0.5em;
                 font-size: 0.6em;
-                color: $purple;
+                color: $purple-dark;
+                font-size: 0.7em;
             }
             
         }
@@ -215,10 +259,24 @@ $newContentHeight: 400px;
 }
 
 /* List */
+.inside {
+    height:100%;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+.post-list {
+    display: table;
+    .row {
+        display: table-row;
+    }
+}
 .list-entry {
     margin-bottom: 2em;
     background-color: $white-light;
-    border-bottom: 2px solid $purple-dark;
+    padding: 1em;
+    box-shadow: 0px 1px 2px $grey-dark;
+    border-top: 2px solid $purple-dark;
+    
 }
 
 .list-image {
@@ -228,15 +286,15 @@ $newContentHeight: 400px;
 
 .list-type {
     color: $purple;
-    font-size: 0.8em;
+    font-size: 0.7em;
     margin-bottom: 0.3em;
 }
 
 .list-title {
-    font-size: 1.5em;
-    margin-top: 1em;
+    font-size: 1.2em;
+    margin-top: 0.5em;
     a {
-        color: $grey-dark;
+        color: $black;
         text-decoration: none;
         
         &:hover {
@@ -245,20 +303,24 @@ $newContentHeight: 400px;
     }
 }
 
-.list-body,
+.list-body {
+    padding-bottom: 1em;
+    overflow: hidden;
+}
 .list-header {
     padding-bottom: 1em;
 }
 
 .list-image {
-    @include aspect-ratio(7, 3);
+    @include aspect-ratio(16, 9);
 }
 
 .list-meta {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
-    font-size: 0.8em;
+    font-size: 0.7em;
     color: $grey-light;
+    border-bottom: solid 1px $white-dark;
 }
 
 /* posts */

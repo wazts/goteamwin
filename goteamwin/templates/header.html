@@ -1,51 +1,31 @@
 {% load navigation_tags %}
 {% load staticfiles %}
 <header id="header-main">
-    <nav class="navbar navbar-default navbar-goteamwin">
-    <div class="container">
-    <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#goteamwin-nav-list" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{% url 'home' %}">GO <b>TEAM</b> WIN</a>
+    <nav class="navigation-top">
+    <div class="container-fluid">
+        <div class="header-logo">
+            <a href="{% url 'home' %}">
+                <img class="logo" src="{% static 'img/logo_400.png' %}"/>
+            </a>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a>HOME</a></li>
+                <li><a>VIDEOS</a></li>
+                <li><a>NEWS</a></li>
+                <li><a>PODCAST</a></li>
+            </ul>
         </div>
         
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="goteamwin-nav-list">
-            <ul class="nav navbar-nav navbar-right">
-                <li role="presentation">
-                    <a href="{% url 'home' %}">HOME</a>
-                </li>
-                <li role="presentation">
-                    <a href="{% url 'text_posts_index' %}">NEWS</a>
-                </li>
-                <li role="presentation">
-                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        SHOWS <span class="caret"></span>
-                    </a>
-                    {% series_list as all_series_list %}
-                    {% if all_series_list %}
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a href="{% url 'series_all_index' %}">All Shows</a>
-                        </li>
-                        {% for series in all_series_list %}
-                        <li>
-                            <a href="{% url 'series_episodes' sSlug=series.slug %}">{{ series.title }}</a>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                    {% endif %}
-                </li>
-                <li role="presentation">
-                    <a href="#">PODCAST</a>
-                </li>
+        <div class="social">
+            <ul>
+                <li><a class="twitter"><i class="fa fa-twitter"></i></a></li>
+                <li><a class="facebook"><i class="fa fa-facebook-official"></i></a></li>
+                <li><a class="twitch"><i class="fa fa-twitch"></i></a></li>
+                <li><a class="youtube"><i class="fa fa-youtube-play"></i></a></li>
             </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
+        
     </nav>
 </header>

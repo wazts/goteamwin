@@ -1,14 +1,15 @@
 {% block featured_content %}
-<a href="{% url 'series_episode_single' sSlug=media.series.slug eSlug=media.slug %}">
-    <div class="featured-image" style="background: url('{{ media.get_featured_image_url }}') center center no-repeat; background-size: cover;">
-        <div class="overlay"></div>
+<a href="{% url 'series_episode_single' sSlug=post.series.slug eSlug=post.slug %}">
+    <div class="meta">
+        {% block featured_type %}TYPE{% endblock %}
+    </div>
+    <div class="featured-image">
+        <div class="content" style="background: url('{{ post.get_featured_image_url }}') center center no-repeat; background-size: cover">
+        </div>
     </div>
     <div class="featured-header">
-        <div class="meta">
-            {% block featured_type %}TYPE{% endblock %}
-        </div>
         <div class="title">
-            {{ media.title }}
+            {{ post.title }}
         </div>
     </div>
 </a> 

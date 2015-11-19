@@ -1,11 +1,14 @@
+<div class="inside">
 <div class="list-entry">
     <article class="list-main">
         <header class="list-header">
             <div class="list-type">{% block post_type %}{% endblock %}</div>
+            <a href='{{ post.get_permilink }}'>
             <div class="list-image">
                 <div class="content" style="background: url('{{ post.get_featured_image_url }}') center center no-repeat; background-size: cover">
                 </div>
             </div>
+            </a>
             <h1 class="list-title"><a href='{{ post.get_permilink }}'>{{ post.title }}</a></h1>
             <div class="list-meta">
                 {% block post_author %}<span class="list-author">Posted by {{ post.author }}</span>{% endblock %} on {{ post.date_pub }}
@@ -15,4 +18,5 @@
             {% block post_content %}{% include post.body_list_template %}{% endblock %}
         </div>
     </article>
+</div>
 </div>
