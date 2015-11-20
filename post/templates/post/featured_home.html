@@ -1,8 +1,5 @@
 {% block featured_content %}
 <a href="{% url 'series_episode_single' sSlug=post.series.slug eSlug=post.slug %}">
-    <div class="meta">
-        {% block featured_type %}TYPE{% endblock %}
-    </div>
     <div class="featured-image">
         <div class="content" style="background: url('{{ post.get_featured_image_url }}') center center no-repeat; background-size: cover">
         </div>
@@ -10,6 +7,9 @@
     <div class="featured-header">
         <div class="title">
             {{ post.title }}
+        </div>
+        <div class="meta">
+            {% block post_author %}POSTED BY {{ post.author|upper }}{% endblock %}
         </div>
     </div>
 </a> 

@@ -1,5 +1,5 @@
 {% extends 'post/list.html' %}
 {% block post_type %}VIDEO{% endblock %}
 {% block post_author %}
-<span class="post-list-author">To <a href="{% url 'series_episodes' sSlug=post.series.slug %}">{{ post.series }}</a></span>
+<span class="post-list-author">TO <a href="{% url 'series_episodes' sSlug=post.series.slug %}">{{ post.series|upper }}</a></span>
 {% endblock%}

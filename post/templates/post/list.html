@@ -1,22 +1,22 @@
-<div class="inside">
-<div class="list-entry">
-    <article class="list-main">
-        <header class="list-header">
-            <div class="list-type">{% block post_type %}{% endblock %}</div>
-            <a href='{{ post.get_permilink }}'>
+<div class="row">
+    <div class="col-xs-4">
+        <a href='{{ post.get_permilink }}'>
             <div class="list-image">
                 <div class="content" style="background: url('{{ post.get_featured_image_url }}') center center no-repeat; background-size: cover">
                 </div>
             </div>
-            </a>
+        </a>
+    </div>
+    <div class="col-xs-8">
+        <header class="list-header">
             <h1 class="list-title"><a href='{{ post.get_permilink }}'>{{ post.title }}</a></h1>
             <div class="list-meta">
-                {% block post_author %}<span class="list-author">Posted by {{ post.author }}</span>{% endblock %} on {{ post.date_pub }}
+                {% block post_author %}<span class="list-author">Posted by {{ post.author }}</span>{% endblock %} ON {{ post.date_pub|date:"F d, Y"|upper }}
+                <span class="list-comments">2 COMMENTS</span>
             </div>
         </header>
         <div class="list-body">
             {% block post_content %}{% include post.body_list_template %}{% endblock %}
         </div>
-    </article>
-</div>
-</div>
+    </div>
+</div> <!-- row -->

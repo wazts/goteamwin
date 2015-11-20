@@ -2,35 +2,30 @@
 {% load staticfiles %}
 
 {% block billboard %}
-    <div class="featured">
-        <div class="container">
-            <div class="row">
-                {% for post in featured_posts %}
-                    <div class="featured-content col-md-4">
-                        {% include post.featured_home_template %}
-                    </div>
-                {% endfor %}
-            </div>
+<div id="featured-billboard">
+    <div class="container">
+        <h2>FEATURED</h2>
+        <div class="row">
+            {% for post in featured_posts %}
+                <div class="featured-content col-md-4">
+                    {% include post.featured_home_template %}
+                </div>
+            {% endfor %}
         </div>
     </div>
+</div>
 {% endblock %}
 {% block content %}
 <div class="row">
-    <div class="col-md-9">
+    <div class="col-md-8">
         <section class="post-list">
-            <h2 class="section-header">FEED</h2>
             {% if posts %}
                 {% for post in posts %}
-                    {% if forloop.counter0|divisibleby:3 %}
-                    <div class="row">
-                    {% endif %}
-                    <div class="col-md-4">
+                <div class="list-entry">
+                    <div class="list-content">
                         {% include post.list_template %}
                     </div>
-                    {% if forloop.counter0|add:1|divisibleby:3 %}
-                    </div>
-                    {% endif %}
-                    
+                </div>
                 {% endfor %}
             {% else %}
                 No Posts
@@ -40,8 +35,15 @@
             {% endif %}
         </section>
     </div>
-    <div class="col-md-3">
-        {% include "sidebar.html" %}
+    <div class="col-md-4">
+        {% if recent_video %}
+            <h2 class="section-header">LATEST VIDEOS</h2>
+            {% for post in recent_video %}
+                <div class="recent-video-container">
+                    {% include 'video/recent_video_snippet.html' %}
+                </div>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>
 {% endblock %}

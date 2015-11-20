@@ -1,9 +1,14 @@
-{% if recent_videos %}
-<div id="featured-videos" class="row">
-    {% for video in recent_videos|slice:":3" %}
-            <div class="col-md-4">
-                {% include "video/featured_image_large.html" %}
-            </div>
-    {% endfor %}
+<div class="meta">
+    <a href="{% url 'series_episodes' sSlug=post.series.slug %}">{{ post.series|upper }}</a>
 </div>
-{% endif %}
+<a href="{% url 'series_episode_single' sSlug=post.series.slug eSlug=post.slug %}">
+    <div class="recent-video">
+        <div class="content" style="background: url('{{ post.get_featured_image_url }}') center center no-repeat; background-size: cover">
+        </div>
+    </div>
+</a>
+<a href="{% url 'series_episode_single' sSlug=post.series.slug eSlug=post.slug %}">
+    <h3 class="title">
+        {{ post.title }}
+    </h3>
+</a> 

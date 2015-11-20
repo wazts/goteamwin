@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from post.models import BasePost
 from series.models import SeriesPost
+from video.models import Video
 
 def handler404(request):
     return render(request, '404.html', status_code=404)
@@ -21,6 +22,7 @@ def home(request):
     """
     posts = BasePost.objects.all().order_by('-date_pub')
     recent_media = SeriesPost.objects.all().order_by('-date_pub')[:3]
+    recent_video = Video.objects.all().order_by('-date_pub')[:3]
     paginator = Paginator(posts, settings.PAGINATION_LIMIT)
 
     page_num = request.GET.get('page', 1)
@@ -34,4 +36,12 @@ def home(request):
         # If page is out of range (e.g. 9999), deliver last page of results.
         page = paginator.page(paginator.num_pages)
     
-    return render(request, 'index.html', {'posts': posts, 'page': page, 'featured_posts': recent_media})
+    return render(  request, 
+                    'index.html', 
+                    {
+                        'posts': posts, 
+                        'page': page, 
+                        'featured_posts': recent_media,
+                        'recent_video': recent_video
+                    }
+                )
